@@ -4,12 +4,13 @@
 
 The first session checks the sum of `17` and `25`. A fresh session checks empty input. The only context passed from the first session to the second is the project's `HANDOFF.md`, not the chat history.
 
-**준비 / Set up.** 저장소 루트에서 실행하세요. 실제 홈 설정은 바꾸지 않습니다. / From the repository root, run:
+**준비 / Set up.** 저장소 루트에서 실행하세요. 한국어 양식은 첫 줄을 `templates=templates/minimal`로 바꾸세요. 실제 홈 설정은 바꾸지 않습니다. / Run from the repository root. The commands below use the English template and leave your home settings alone.
 
 ```sh
+templates=templates/minimal/en
 demo=$(mktemp -d)
 cp examples/csv/total.py examples/csv/sample.csv "$demo/"
-cp templates/minimal/HANDOFF.md "$demo/HANDOFF.md"
+cp "$templates/HANDOFF.md" "$demo/HANDOFF.md"
 cd "$demo"
 ```
 

@@ -1,34 +1,36 @@
 # agent-handoff-kit
 
-Claude Code에서 멈춘 작업을 다음 날 Codex나 OMP(oh-my-pi)에서 이어갈 때, 세션 대화 대신 프로젝트의 `HANDOFF.md`를 읽는 방법입니다. 세 도구에 같은 작업 규칙을 설치하고, 프로젝트에는 직접 채울 인계 양식 하나를 둡니다. 대화를 수집하거나 기억 서버를 실행하지 않습니다.
+**English** · [한국어](README.ko.md)
 
-## 설치 전에 써보기
+Stop in Claude Code today and pick up in Codex or OMP (oh-my-pi) tomorrow. The kit gives all three tools the same work rules and a blank `HANDOFF.md` for your project. You or your agent write down what happened and what to do next. No chat collection or memory server is involved.
 
-macOS 또는 Linux에서 `sh`와 Python 3가 필요합니다. 이 폴더에서 다음을 실행하면 실제 홈을 바꾸지 않고 설치 결과를 볼 수 있습니다.
+## Try it without changing your settings
+
+From the repository root on macOS or Linux, run the installer with `sh` and Python 3 in a temporary home:
 
 ```sh
 demo_home=$(mktemp -d)
-HOME="$demo_home" sh install.sh
-HOME="$demo_home" sh install.sh --check
+HOME="$demo_home" sh install.sh --lang en
+HOME="$demo_home" sh install.sh --lang en --check
 ```
 
-설치되는 파일은 네 개입니다.
+It installs four files:
 
-- `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, `~/.omp/agent/AGENTS.md`: `templates/minimal/rules.md`의 복사본
-- `~/.config/my-ai-memory/templates/HANDOFF.md`: 빈 프로젝트 인계 양식
+- `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, and `~/.omp/agent/AGENTS.md`: copies of the [English work rules](templates/minimal/en/rules.md).
+- `~/.config/my-ai-memory/templates/HANDOFF.md`: the blank [handoff template](templates/minimal/en/HANDOFF.md).
 
-내용을 확인한 뒤 실제 홈에 적용하려면 `sh install.sh`를 실행합니다. 기본 설정 경로를 대상으로 하며, 기존 규칙이 다르거나 대상이 링크면 덮어쓰지 않고 중단합니다. 기존 규칙을 유지하려면 설치 대신 `templates/minimal/rules.md`에서 필요한 항목만 직접 옮기세요. `sh install.sh --check`는 네 파일을 읽어 원본과 대조할 뿐 설치하거나 수정하지 않습니다. 도구 자체나 추가 패키지는 설치하지 않습니다.
+To install in your own home, run `sh install.sh --lang en`. For Korean, use `--lang ko`. **Omitting `--lang` still selects Korean**, as in earlier versions. Use the same language for `--check`: it reports missing or different files without creating or changing anything.
 
-## 작업 이어가기
+Changing the language flag does not replace your existing files. Installation stops if a target differs or is a link. To keep custom settings, skip the installer and copy only the rules you want from the [English](templates/minimal/en/rules.md) or [Korean](templates/minimal/rules.md) version. The installer does not install the coding tools or any packages.
 
-1. 프로젝트 루트에 `HANDOFF.md`가 없다면 `cp -n ~/.config/my-ai-memory/templates/HANDOFF.md ./HANDOFF.md`로 만듭니다. 이미 있다면 복사를 건너뛰고 그 파일을 사용하세요.
-2. 작업을 멈출 때 `State`에 직접 확인한 결과를, `Next`에 다음 사람이 열 파일이나 실행할 명령을 적습니다. 예: `State: CSV 예제에서 합계 42 확인`, `Next: 빈 CSV의 합계도 0인지 확인`.
-3. 다음 세션을 같은 프로젝트에서 열고 **“HANDOFF.md를 읽고 Next부터 이어줘”**라고 요청합니다.
+## Hand off a task
 
-처음이라면 [Claude Code → Codex CSV 실습 (한국어 / English)](examples/csv/README.md)으로 같은 인계를 따라 해보세요. 실제 프로젝트나 개인 데이터는 필요하지 않습니다.
+1. From your project root, if `HANDOFF.md` does not exist, run `cp -n ~/.config/my-ai-memory/templates/HANDOFF.md ./HANDOFF.md`. If it exists, use it as is.
+2. Before stopping, write what you verified in `State` and a concrete first step in `Next`. For example: **State:** the sample CSV sums to 42. **Next:** check that empty input sums to 0.
+3. Open a fresh session in the same project and ask: **“Read `HANDOFF.md` and continue from `Next`.”**
 
-계정 정보나 고객 자료는 인계에 넣지 마세요. 이 키트는 인계 내용을 자동 작성하거나 비밀을 검사하지 않습니다.
+Try the [Claude Code → Codex CSV walkthrough (English / 한국어)](examples/csv/README.md) without using a real project or personal data. Keep account details and customer data out of your handoffs: the kit does not write the notes or scan them for secrets.
 
-## 라이선스
+## License
 
-이 키트의 설치 스크립트, 작업 규칙, 인계 양식과 문서는 [MIT 라이선스](LICENSE)로 제공합니다. 복사하거나 재배포할 때는 저작권 표시와 라이선스 고지를 함께 보존하세요.
+The scripts, work rules, templates, and documentation are [MIT licensed](LICENSE). Keep the copyright and license notice when redistributing them.
