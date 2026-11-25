@@ -1,4 +1,4 @@
-# my-ai-memory-minimal
+# agent-handoff-kit
 
 Claude Code에서 멈춘 작업을 다음 날 Codex나 OMP(oh-my-pi)에서 이어갈 때, 세션 대화 대신 프로젝트의 `HANDOFF.md`를 읽는 방법입니다. 세 도구에 같은 작업 규칙을 설치하고, 프로젝트에는 직접 채울 인계 양식 하나를 둡니다. 대화를 수집하거나 기억 서버를 실행하지 않습니다.
 
