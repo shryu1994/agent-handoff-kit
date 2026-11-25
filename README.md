@@ -25,6 +25,8 @@ HOME="$demo_home" sh install.sh --check
 2. 작업을 멈출 때 `State`에 직접 확인한 결과를, `Next`에 다음 사람이 열 파일이나 실행할 명령을 적습니다. 예: `State: CSV 예제에서 합계 42 확인`, `Next: 빈 CSV의 합계도 0인지 확인`.
 3. 다음 세션을 같은 프로젝트에서 열고 **“HANDOFF.md를 읽고 Next부터 이어줘”**라고 요청합니다.
 
+처음이라면 [Claude Code → Codex CSV 실습 (한국어 / English)](examples/csv/README.md)으로 같은 인계를 따라 해보세요. 실제 프로젝트나 개인 데이터는 필요하지 않습니다.
+
 계정 정보나 고객 자료는 인계에 넣지 마세요. 이 키트는 인계 내용을 자동 작성하거나 비밀을 검사하지 않습니다.
 
 ## 라이선스
